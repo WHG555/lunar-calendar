@@ -13,11 +13,11 @@ export class LunarView extends ItemView {
         return VIEW_TYPE;
     }
     getDisplayText(): string {
-        return "Vue Stater";
+        return "农历";
     }
     getIcon(): string {
-        return "dice";
-    }
+        return "calendar-with-checkmark";
+      }
     async onOpen() {
         const {contentEl} = this;
         contentEl.empty();
