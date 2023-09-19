@@ -1,8 +1,214 @@
-/*
+/* src/stalin.css */
+/* main.css */
+.calendar *[data-v-ce2cc6ad] {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.calendar[data-v-ce2cc6ad] {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  margin: 0;
+  box-sizing: border-box;
+  border: 2px solid #4E6EF2;
+  display: flex;
+  height: 465px;
+  overflow: hidden;
+}
+.calendar .container[data-v-ce2cc6ad] {
+  padding-top: 14px;
+}
+.calendar .container .bar[data-v-ce2cc6ad] {
+  position: relative;
+  display: flex;
+  height: 30px;
+  padding: 0 10px;
+  margin-bottom: 24px;
+}
+.calendar .container .bar div[data-v-ce2cc6ad] {
+  position: relative;
+  flex: 1;
+}
+.calendar .container .bar div.button[data-v-ce2cc6ad] {
+  position: absolute;
+  right: 0;
+  width: 68px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  background: #F5F5F6;
+  border-radius: 6px;
+  color: #333;
+  cursor: pointer;
+  font-size: 13px;
+}
+.calendar .container .bar input[data-v-ce2cc6ad],
+.calendar .container .bar select[data-v-ce2cc6ad] {
+  border: 1px solid #D7D9E0;
+  box-sizing: border-box;
+  padding: 7px;
+  border-radius: 6px;
+  line-height: 1;
+  cursor: pointer;
+  position: relative;
+  background: #FFFFFF;
+  width: 80px;
+  margin-right: 6px;
+  text-align: center;
+}
+.calendar .container .bar select[data-v-ce2cc6ad] {
+  appearance: none;
+}
+.calendar .container ul[data-v-ce2cc6ad],
+.calendar .container ol[data-v-ce2cc6ad] {
+  list-style: none;
+  width: 448px;
+}
+.calendar .container ul.head li[data-v-ce2cc6ad] {
+  float: left;
+  width: 64px;
+  height: 36px;
+  font-size: 13px;
+}
+.calendar .container ul.body ol li[data-v-ce2cc6ad] {
+  float: left;
+  width: 64px;
+  position: relative;
+  height: 60px;
+  padding: 2px;
+  cursor: pointer;
+}
+.calendar .container ul.body ol li div.inner[data-v-ce2cc6ad] {
+  padding: 4px;
+  border-radius: 6px;
+  border: 2px solid transparent;
+}
+.calendar .container ul.body ol li div.inner b[data-v-ce2cc6ad] {
+  display: block;
+  font-weight: normal;
+  height: 22px;
+  font-size: 18px;
+  color: #000;
+}
+.calendar .container ul.body ol li div.inner i[data-v-ce2cc6ad] {
+  display: block;
+  font-style: normal;
+  color: #333;
+  font-size: 12px;
+}
+.calendar .container ul.body ol li div.inner u[data-v-ce2cc6ad] {
+  position: absolute;
+  text-decoration: none;
+  left: 7px;
+  top: 7px;
+  color: #626675;
+  font-size: 12px;
+  line-height: 12px;
+}
+.calendar .container ul.body ol li.other[data-v-ce2cc6ad] {
+  filter: alpha(opacity=40);
+  opacity: 0.4;
+}
+.calendar .container ul.body ol li:hover div.inner[data-v-ce2cc6ad] {
+  border: 2px solid #BDBFC8;
+}
+.calendar .container ul.body ol li.selected div.inner[data-v-ce2cc6ad] {
+  border: 2px solid #BDBFC8;
+}
+.calendar .container ul.body ol li.holiday div.inner[data-v-ce2cc6ad] {
+  background: #f5f5f6;
+}
+.calendar .container ul.body ol li.holiday.rest div.inner[data-v-ce2cc6ad] {
+  background: #FDE3E4;
+}
+.calendar .container ul.body ol li.rest div.inner b[data-v-ce2cc6ad] {
+  color: #F73131;
+}
+.calendar .container ul.body ol li.rest div.inner u[data-v-ce2cc6ad] {
+  color: #F73131;
+}
+.calendar .container ul.body ol li.today div.inner[data-v-ce2cc6ad] {
+  border: 2px solid #4E6EF2 !important;
+}
+.calendar .side[data-v-ce2cc6ad] {
+  background: #4E6EF2;
+  width: 112px;
+  color: #fff;
+}
+.calendar .side .ymd[data-v-ce2cc6ad] {
+  line-height: 45px;
+  font-size: 13px;
+}
+.calendar .side .day[data-v-ce2cc6ad] {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto;
+  line-height: 80px;
+  font-size: 52px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 12px;
+}
+.calendar .side .lunar[data-v-ce2cc6ad] {
+  margin-top: 6px;
+}
+.calendar .side .lunar div[data-v-ce2cc6ad] {
+  font-size: 13px;
+  line-height: 21px;
+}
+.calendar .side .festival[data-v-ce2cc6ad] {
+  position: relative;
+  margin-top: 13px;
+  padding-left: 22px;
+  padding-right: 14px;
+  text-align: justify;
+  color: #FFF;
+  font-size: 12px;
+  line-height: 16px;
+}
+.calendar .side .festival[data-v-ce2cc6ad]::before {
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: 16px;
+  width: 3px;
+  height: 3px;
+  background: #fff;
+  border-radius: 50%;
+}
+.calendar .side .yiji[data-v-ce2cc6ad] {
+  position: relative;
+  margin-top: 12px;
+  padding-top: 12px;
+  background: rgba(255, 255, 255, 0.15);
+  height: 80%;
+}
+.calendar .side .yiji .yi[data-v-ce2cc6ad] {
+  float: left;
+  width: 50%;
+}
+.calendar .side .yiji .yi div[data-v-ce2cc6ad] {
+  font-size: 12px;
+  line-height: 20px;
+}
+.calendar .side .yiji .ji[data-v-ce2cc6ad] {
+  float: right;
+  width: 50%;
+}
+.calendar .side .yiji .ji div[data-v-ce2cc6ad] {
+  font-size: 12px;
+  line-height: 20px;
+}
+.calendar .side .yiji b[data-v-ce2cc6ad] {
+  display: block;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  margin: 0 auto;
+  font-style: normal;
+  font-size: 24px;
+  color: #fff;
+}
 
-This CSS file will be included with your plugin, and
-available in the app when your plugin is enabled.
-
-If your plugin does not need CSS, delete this file.
-
-*/
+/* src/main.css */

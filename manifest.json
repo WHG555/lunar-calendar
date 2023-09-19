@@ -1,11 +1,10 @@
 {
-	"id": "sample-plugin",
-	"name": "Sample Plugin",
+	"id": "obsidian-lunar-calendar",
+	"name": "Lunar Calendar",
 	"version": "1.0.0",
-	"minAppVersion": "0.15.0",
-	"description": "This is a sample plugin for Obsidian. This plugin demonstrates some of the capabilities of the Obsidian API.",
-	"author": "Obsidian",
-	"authorUrl": "https://obsidian.md",
-	"fundingUrl": "https://obsidian.md/pricing",
-	"isDesktopOnly": false
+	"minAppVersion": "0.12.0",
+	"description": "一个支持农历的日历",
+	"author": "OSmile",
+	"authorUrl": "https://github.com/WHG555",
+	"isDesktopOnly": true
 }
