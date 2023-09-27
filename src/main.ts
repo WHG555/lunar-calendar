@@ -2,7 +2,8 @@ import {
     App,
     Plugin,
     PluginSettingTab,
-    Setting
+    Setting,
+    WorkspaceLeaf
 } from 'obsidian';
 
 import { LunarView, VIEW_TYPE } from './view'
@@ -21,14 +22,17 @@ export var gsetting = DEFAULT_SETTINGS;
 
 export default class MyPlugin extends Plugin {
     settings: MyPluginSettings;
+    private view: LunarView;
 
     async onload() {
         await this.loadSettings();
 
+        console.log("load Lunar Calendar")
+
         this.registerView(
             VIEW_TYPE,
-            (leaf) => new LunarView(leaf)
-        )
+            (leaf: WorkspaceLeaf) => new LunarView(leaf)
+        );
 
         // 这添加了一个设置选项卡，以便用户可以配置插件的各个方面
 		this.addSettingTab(new LunarSettingTab(this.app, this));
@@ -38,6 +42,7 @@ export default class MyPlugin extends Plugin {
             name: '打开农历',
             callback: () => {
                 this.activateView()
+                // this.view.onOpen()
             }
         });
 
@@ -86,7 +91,7 @@ class LunarSettingTab extends PluginSettingTab {
 		containerEl.empty();
 
 		new Setting(containerEl)
-			.setName('日记路径') 		// 设置名称
+			.setName('日记保存路径') 		// 设置名称
 			.setDesc('日历生成的日记保存的路径')	// 设置描述
 			.addText(text => text
 				.setPlaceholder('输入要保存的日记路径')

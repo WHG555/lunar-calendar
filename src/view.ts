@@ -19,13 +19,14 @@ export class LunarView extends ItemView {
         return "calendar-with-checkmark";
       }
     async onOpen() {
-        const {contentEl} = this;
-        contentEl.empty();
-        contentEl.createEl("div", {
+        const container = this.containerEl.children[1];
+        container.empty();
+        let content = container.createEl("div", {
             cls: "lunar"
         });
-        let app = createApp(LunarCalendarView);
-        app.mount('.lunar');
+
+        this.vueapp = createApp(LunarCalendarView);
+        this.vueapp.mount(content);
     }
     async onClose() {
         this.vueapp.unmount();
