@@ -8,20 +8,20 @@ import {
 
 import { LunarView, VIEW_TYPE } from './view'
 
-interface MyPluginSettings {
+interface LunarCalendarPluginSettings {
     calendarpath: string;
     dateformat: string;
 }
 
-const DEFAULT_SETTINGS: MyPluginSettings = {
+const DEFAULT_SETTINGS: LunarCalendarPluginSettings = {
     calendarpath: '/',
     dateformat: "YYYY-MM-DD"
 }
 
 export var gsetting = DEFAULT_SETTINGS;
 
-export default class MyPlugin extends Plugin {
-    settings: MyPluginSettings;
+export default class LunarCalendarPlugin extends Plugin {
+    settings: LunarCalendarPluginSettings;
     private view: LunarView;
 
     async onload() {
@@ -49,7 +49,6 @@ export default class MyPlugin extends Plugin {
     }
 
     onunload() {
-        this.app.workspace.detachLeavesOfType(VIEW_TYPE)
         
     }
 
@@ -76,11 +75,12 @@ export default class MyPlugin extends Plugin {
     }
 }
 
+
 // 插件设置
 class LunarSettingTab extends PluginSettingTab {
-	plugin: MyPlugin;
+	plugin: LunarCalendarPlugin;
 
-	constructor(app: App, plugin: MyPlugin) {
+	constructor(app: App, plugin: LunarCalendarPlugin) {
 		super(app, plugin);
 		this.plugin = plugin;
 	}

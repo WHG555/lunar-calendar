@@ -158,30 +158,22 @@ function render() {
   state.holidays = holidays
 }
 
-
+// 主要的函数处理
 async function onSelect(day: Day) {
   state.selected = day
-  // 函数处理
 
   let filename = moment(state.selected.ymd, "YYYY-MM-DD").format(gsetting.dateformat) + ".md"
   let dayfile = gsetting.calendarpath + "/" + filename
   let sfile:TFile
-  // console.log("file exist", await app.vault.adapter.exists(dayfile))
+
   if (await app.vault.adapter.exists(dayfile)) {
-    // console.log("file path", app.vault.getAbstractFileByPath(dayfile))
-    let filelist = app.vault.getMarkdownFiles()
-    for (let i in filelist){
-      if (filelist[i].path === dayfile) {
-        console.log("===", filelist[i].path, dayfile)
-        sfile = filelist[i]
-      }
-    }
+    sfile = app.vault.getAbstractFileByPath(dayfile);
   } else {
     sfile = await app.vault.create(dayfile,"")
   }
 
-  const leaf = app.workspace.getUnpinnedLeaf()
-  leaf.openFile(sfile , { active : false });
+  const leaf = app.workspace.getLeaf('tab')
+  leaf.openFile(sfile , { active : true });
 }
 
 function onBack() {
