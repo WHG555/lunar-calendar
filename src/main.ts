@@ -14,7 +14,7 @@ interface LunarCalendarPluginSettings {
 }
 
 const DEFAULT_SETTINGS: LunarCalendarPluginSettings = {
-    calendarpath: '/',
+    calendarpath: '日历',
     dateformat: "YYYY-MM-DD"
 }
 
@@ -31,7 +31,7 @@ export default class LunarCalendarPlugin extends Plugin {
 
         this.registerView(
             VIEW_TYPE,
-            (leaf: WorkspaceLeaf) => new LunarView(leaf)
+            (leaf: WorkspaceLeaf) => new LunarView(leaf, this)
         );
 
         // 这添加了一个设置选项卡，以便用户可以配置插件的各个方面
@@ -92,7 +92,7 @@ class LunarSettingTab extends PluginSettingTab {
 
 		new Setting(containerEl)
 			.setName('日记保存路径') 		// 设置名称
-			.setDesc('日历生成的日记保存的路径')	// 设置描述
+			.setDesc('日历生成的日记保存的路径。默认为`日历`')	// 设置描述
 			.addText(text => text
 				.setPlaceholder('输入要保存的日记路径')
 				.setValue(this.plugin.settings.calendarpath)

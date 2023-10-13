@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import {reactive, watch} from 'vue'
+import {reactive, watch, getCurrentInstance } from 'vue'
 import {Solar, SolarMonth, SolarWeek, HolidayUtil} from 'lunar-typescript'
-
+import * as path from 'path';
 import {
     App,
     Modal,
@@ -16,6 +16,8 @@ import {
 } from 'obsidian';
 
 import {gsetting} from "./main"
+
+const plugin = getCurrentInstance().appContext.config.globalProperties.plugin as PluginType;
 
 const now = Solar.fromDate(new Date())
 
@@ -163,16 +165,18 @@ async function onSelect(day: Day) {
   state.selected = day
 
   let filename = moment(state.selected.ymd, "YYYY-MM-DD").format(gsetting.dateformat) + ".md"
-  let dayfile = gsetting.calendarpath + "/" + filename
+  let dayfile = path.join(gsetting.calendarpath, filename)
+  console.log(dayfile)
+  // let dayfile = gsetting.calendarpath + "/" + filename
   let sfile:TFile
 
-  if (await app.vault.adapter.exists(dayfile)) {
-    sfile = app.vault.getAbstractFileByPath(dayfile);
+  if (await plugin.app.vault.adapter.exists(dayfile)) {
+    sfile = plugin.app.vault.getAbstractFileByPath(dayfile);
   } else {
-    sfile = await app.vault.create(dayfile,"")
+    sfile = await plugin.app.vault.create(dayfile,"")
   }
 
-  const leaf = app.workspace.getLeaf('tab')
+  const leaf = plugin.app.workspace.getLeaf('tab')
   leaf.openFile(sfile , { active : true });
 }
 
