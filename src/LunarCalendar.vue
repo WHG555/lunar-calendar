@@ -166,8 +166,6 @@ async function onSelect(day: Day) {
 
   let filename = moment(state.selected.ymd, "YYYY-MM-DD").format(gsetting.dateformat) + ".md"
   let dayfile = path.join(gsetting.calendarpath, filename)
-  console.log(dayfile)
-  // let dayfile = gsetting.calendarpath + "/" + filename
   let sfile:TFile
 
   if (await plugin.app.vault.adapter.exists(dayfile)) {
