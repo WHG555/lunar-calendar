@@ -249,32 +249,7 @@ watch(() => state.holidayMonth, (newVal) => {
         </li>
       </ul>
     </div>
-    <div class="side">
-      <div class="ymd">{{ state.selected.ymd }}</div>
-      <div class="day">{{ state.selected.day }}</div>
-      <div class="lunar">
-        <div>{{ state.selected.lunarMonth }}月 {{ state.selected.lunarDay }}</div>
-        <div>{{ state.selected.yearGanZhi }}年 {{ state.selected.yearShengXiao }}</div>
-        <div>{{ state.selected.monthGanZhi }}月 {{ state.selected.dayGanZhi }}日</div>
-      </div>
-      <div class="festival" v-for="f in state.selected.festivals">
-        {{ f }}
-      </div>
-      <div class="yiji">
-        <div class="yi">
-          <b>宜</b>
-          <div v-for="f in state.selected.yi">
-            {{ f }}
-          </div>
-        </div>
-        <div class="ji">
-          <b>忌</b>
-          <div v-for="f in state.selected.ji">
-            {{ f }}
-          </div>
-        </div>
-      </div>
-    </div>
+    
   </div>
 </template>
 
@@ -293,7 +268,7 @@ watch(() => state.holidayMonth, (newVal) => {
   border-radius: 16px;
   margin: 0;
   box-sizing: border-box;
-  border: 2px solid #4E6EF2;
+  border: 0px solid #4E6EF2;
   display: flex;
   height: 465px;
   overflow: hidden;
@@ -320,9 +295,9 @@ watch(() => state.holidayMonth, (newVal) => {
         height: 30px;
         line-height: 30px;
         text-align: center;
-        background: #F5F5F6;
+        background: var(--color-base-30);
         border-radius: 6px;
-        color: #333;
+        color: var(--color-base-100);
         cursor: pointer;
         font-size: 13px;
       }
@@ -335,7 +310,7 @@ watch(() => state.holidayMonth, (newVal) => {
         line-height: 1;
         cursor: pointer;
         position: relative;
-        background: #FFFFFF;
+        background: var(--color-base-05);
         width: 80px;
         margin-right: 6px;
         text-align: center;
@@ -383,13 +358,13 @@ watch(() => state.holidayMonth, (newVal) => {
               font-weight: normal;
               height: 22px;
               font-size: 18px;
-              color: #000;
+              color: var(--color-base-100);
             }
 
             i {
               display: block;
               font-style: normal;
-              color: #333;
+              color: var(--color-base-100);
               font-size: 12px;
             }
 
@@ -425,7 +400,7 @@ watch(() => state.holidayMonth, (newVal) => {
 
         li.holiday {
           div.inner {
-            background: #f5f5f6;
+            background: var(--color-base-30);
           }
         }
 

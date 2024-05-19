@@ -6,7 +6,7 @@ import {
     WorkspaceLeaf
 } from 'obsidian';
 
-import { LunarView, VIEW_TYPE } from './view'
+import { LunarView, VIEW_TYPE, LunarWeekView, VIEW_WEEK_TYPE, LunarView1, VIEW_TYPE1 } from './view'
 
 interface LunarCalendarPluginSettings {
     calendarpath: string;
@@ -23,25 +23,54 @@ export var gsetting = DEFAULT_SETTINGS;
 export default class LunarCalendarPlugin extends Plugin {
     settings: LunarCalendarPluginSettings;
     private view: LunarView;
+    private view1: LunarView1;
+    private viewweek: LunarWeekView;
 
     async onload() {
         await this.loadSettings();
 
         console.log("load Lunar Calendar")
-
+        // 月历
         this.registerView(
             VIEW_TYPE,
             (leaf: WorkspaceLeaf) => new LunarView(leaf, this)
+        );
+        // 月历1
+        this.registerView(
+            VIEW_TYPE1,
+            (leaf: WorkspaceLeaf) => new LunarView1(leaf, this)
+        );
+        // 周历
+        this.registerView(
+            VIEW_WEEK_TYPE,
+            (leaf: WorkspaceLeaf) => new LunarWeekView(leaf, this)
         );
 
         // 这添加了一个设置选项卡，以便用户可以配置插件的各个方面
 		this.addSettingTab(new LunarSettingTab(this.app, this));
 
         this.addCommand({
-            id: 'lunar-calendar',
+            id: 'lunar-calendar-1',
             name: '打开农历',
             callback: () => {
                 this.activateView()
+                // this.view.onOpen()
+            }
+        });
+        this.addCommand({
+            id: 'lunar-calendar-2',
+            name: '打开农历二',
+            callback: () => {
+                this.activateView1()
+                // this.view.onOpen()
+            }
+        });
+
+        this.addCommand({
+            id: 'lunar-calendar-3',
+            name: '打开日历',
+            callback: () => {
+                this.activateViewWeek()
                 // this.view.onOpen()
             }
         });
@@ -71,6 +100,32 @@ export default class LunarCalendarPlugin extends Plugin {
 
         this.app.workspace.revealLeaf(
             this.app.workspace.getLeavesOfType(VIEW_TYPE)[0]
+        )
+    }
+    async activateView1() {
+        if (this.app.workspace.getLeavesOfType(VIEW_TYPE1).length === 0) {
+            await this.app.workspace.getRightLeaf(false).setViewState({
+                type: VIEW_TYPE1,
+                active: true,
+            })
+        }
+
+        this.app.workspace.revealLeaf(
+            this.app.workspace.getLeavesOfType(VIEW_TYPE1)[0]
+        )
+    }
+
+
+    async activateViewWeek() {
+        if (this.app.workspace.getLeavesOfType(VIEW_WEEK_TYPE).length === 0) {
+            await this.app.workspace.getRightLeaf(false).setViewState({
+                type: VIEW_WEEK_TYPE,
+                active: true,
+            })
+        }
+
+        this.app.workspace.revealLeaf(
+            this.app.workspace.getLeavesOfType(VIEW_WEEK_TYPE)[0]
         )
     }
 }
